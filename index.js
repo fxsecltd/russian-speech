@@ -299,7 +299,7 @@ window.addEventListener('load', function() {
 				$recognition.querySelectorAll('*').forEach((e) => e.addEventListener('click', (event) => speakText(event.target.textContent)));
 				$recognition.setAttribute('confidence', (parseInt(res.confidence * 100) + '%'));
 
-				var clear = (text) => text.replace(/[^\w\s]|_/g, '').replace(/\s+/g, ' ').trim().toLowerCase();
+				var clear = (text) => text.replace(/[^\p{Cyrillic}\s]|_/g, '').replace(/\s+/g, ' ').trim().toLowerCase();
 				phrase = clear(phrase);
 				transcript = clear(transcript);
 
