@@ -215,11 +215,11 @@ window.addEventListener('load', function() {
 			return;
 
 		function speakExample () {
-			setTimeout(() => speakText('Where is a cat?'), 200);
+			setTimeout(() => speakText('Привет медвед'), 200);
 		}
 
 		voices.forEach(function(e, i) {
-			if (e.lang.indexOf('en') == 0 && (e.lang.indexOf('US') != -1 || e.lang.indexOf('UK') != -1 || e.lang.indexOf('GB') != -1)) {
+			if (e.lang.indexOf('ru') == 0 ) {
 				var $div = document.createElement('div');
 				$div.setAttribute('value', i);
 				$div.setAttribute('title', e.name);
@@ -460,8 +460,8 @@ window.addEventListener('load', function() {
 		}).join(' ');
 	}	
 		
-	var num = 'zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen'.split(' ');
-	var tens = 'twenty thirty forty fifty sixty seventy eighty ninety'.split(' ');
+	var num = 'ноль один два три четыре пять шесть семь восемь девять десять одинадцать двенадцать тринадцать четырнадцать пятнадцать шестнадцать семнадцать восемнадцать девятнадцать'.split(' ');
+	var tens = 'двадцать тридцать сорок пятьдесят шастьдесят семьдесят восемьдесят девяносто'.split(' ');
 	function num2text(n){
 	    if (n < 20) return num[n];
 	    var digit = n%10;
