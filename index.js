@@ -6,10 +6,9 @@ window.addEventListener('load', function() {
 	var current_phrase_no, nextPhraseTimer;
 	var $success = new Audio('correct.mp3');	
 
-	Promise.all(['texts.txt', 'homophones.txt'].map(f => fetch(f).then(res => res.text())))	
+	Promise.all(['texts.txt'].map(f => fetch(f).then(res => res.text())))	
 		.then(function (res) {
 			texts = parseTexts(res[0]);
-			homophones = parseHomophones(res[1]);
 
 			for (id in texts)
 				addText(id, texts[id].name, texts[id].text);
@@ -444,20 +443,7 @@ window.addEventListener('load', function() {
 	
 	function replaceHomophones (phrase, transcript) {
 		var phrase_words = phrase.split(' ').map((w) => w.toLowerCase().replace(/(^\W*)|(\W*$)/g, ''));
-		return transcript.split(' ').map(function(word, i) {
-			var w = word.toLowerCase();
-			var ws = homophones[w];
-			if (!ws)
-				return word;
-	
-			var check = (w) => i > 1 && phrase_words[i - 1] == w || phrase_words[i] == w || i + 1 < phrase_words.length && phrase_words[i + 1] == w
-			for (var j = 0; j < ws.length; j++) {
-				if (check(ws[j]))
-					return ws[j];
-			}
-	
-			return word;
-		}).join(' ');
+		return transcript.split(' ').map(function(word, i){return word;}).join(' ');
 	}	
 		
 	var num = 'ноль один два три четыре пять шесть семь восемь девять десять одинадцать двенадцать тринадцать четырнадцать пятнадцать шестнадцать семнадцать восемнадцать девятнадцать'.split(' ');
