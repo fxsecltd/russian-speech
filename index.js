@@ -306,7 +306,7 @@ window.addEventListener('load', function() {
 				$panel_recognition.setAttribute('mode', (transcript.length || 0) < phrase.length * 0.7 || phrase == transcript ? 'recognition' : 'compare');
 
 				var compare = '';
-				if (phrase != transcript) {
+				if (phrase.localeCompare(transcript, "ru")!=0) {
 					var d = dmp.diff_main(phrase, transcript);
 					dmp.diff_cleanupEfficiency(d);
 					compare = dmp.diff_prettyHtml(d);
