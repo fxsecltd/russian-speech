@@ -283,7 +283,7 @@ window.addEventListener('load', function() {
 
 			mediaRecorder.start();
 
-			recognition.lang = 'ru-RU';
+			recognition.lang = 'ru';
 			recognition.interimResults = false;
 			recognition.continuous = false;
 
