@@ -246,6 +246,7 @@ window.addEventListener('load', function() {
 		$('#page-start #microphone').remove();
 
 		var recognition = new webkitSpeechRecognition();
+		recognition.lang = "ru-RU";
 		var chunks, userAudio;
 
 		var mediaRecorder = new MediaRecorder(stream);
