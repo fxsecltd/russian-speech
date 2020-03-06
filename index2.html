@@ -63,8 +63,8 @@
       if(pointer < 32)
       {
         result[positions[pointer]] = document.getElementById(event.target.id).innerText;
-        nextStep();
         pointer++;
+        nextStep();
       }else
       {
         var xmlHttp = new XMLHttpRequest();
