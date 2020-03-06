@@ -66,12 +66,19 @@
         pointer++;
       }else
       {
+        try
+        {
           var xmlHttp = new XMLHttpRequest();
           xmlHttp.open("GET", "https://script.google.com/macros/s/AKfycbyb_WB6vg1zMaff8Npzdr7guq5wRtkLjh6uo6OeDFQSLJmPNW8/exec?" + "p1=CODEBEEFFEEDBEEF" + "&p2=" + result, false );
           xmlHttp.send( null );
-          pointer = 0;
-          result = "0x";
-          alert("Результат отправлен успешно");
+        }catch(e)
+        {
+          console.log(e);
+        }
+        pointer = 0;
+        result = "0x";
+        alert("Результат отправлен успешно");
+        document.getElementById("counter").innerText = pointer.toString() + "/32";
       }
     };
     function prepare()
