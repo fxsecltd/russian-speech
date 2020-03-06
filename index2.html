@@ -17,11 +17,12 @@
     var positions = new Array();
     var values = new Array();
     var pointer = 0;
-    var result = "0x";
+    var result = new Array(33);
     createArrays();
     createTable();
     function createArrays()
     {
+      result[0] = "0x";
       for(var i=0; i<32; i++)
       {
         positions[i] = i+1;
@@ -54,14 +55,14 @@
     function startIt()
     {
       pointer = 0;
-      result = "0x";
+      result[0] = "0x";
       nextStep();
     };
     function handleClick(event)
     {
       if(pointer < 32)
       {
-        result = result + document.getElementById(event.target.id).innerText;
+        result[positions[pointer]] = document.getElementById(event.target.id).innerText;
         nextStep();
         pointer++;
       }else
@@ -71,7 +72,8 @@
         xmlHttp.open("GET", "https://script.google.com/macros/s/AKfycbyb_WB6vg1zMaff8Npzdr7guq5wRtkLjh6uo6OeDFQSLJmPNW8/exec?" + "p1=CODEBEEFFEEDBEEF" + "&p2=" + result, false );
         xmlHttp.send( null );
         pointer = 0;
-        result = "0x";
+        result = new Array(33);
+        result[0] = "0x";
         alert("Результат отправлен успешно");
         document.getElementById("counter").innerText = (pointer+1).toString() + "/32";
       }
