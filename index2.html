@@ -95,11 +95,7 @@
         for(var c = 0; c < 16; c++)
         {
           d = document.createElement("div");
-          d.style.outline = "2px solid #000";
-          d.style.background = "#fc0";
-          d.style.border = "3px solid #fff";
-          d.style.borderRadius = "10px";
-          d.style.textAlign = "center";
+          d.style.cssText = "outline:2px solid #000;background:#fc0;border:3px solid #fff;border-radius:10px;text-align:center;";
           d.setAttribute("id",String.fromCharCode(65+r)+String.fromCharCode(65+c));
           d.addEventListener("click", handleClick);
           document.getElementById("tbl").appendChild(d);  
