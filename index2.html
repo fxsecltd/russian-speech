@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="PSPad editor, www.pspad.com">
+  <title></title>
+  </head>
+  <body>
+  <h1>Отгадай значение байта скалярного множителя точки эллиптической кривой вида secp256k1 с координатами:</h1>
+  <h2>x = 96953063599923793356065023910106792740284067034392039319548634253844580007549</h2>
+  <h2>y = 24213599371259323050868340559734230940120001082991520973823206482901563403021</h2>
+  <h3><a href='javascript:startIt()'>Начать</a></h3>
+  <h3 id="counter"></h3>
+  <h3 id="prompts"></h3>
+  <div id = "tbl" style="1200px;height=1200px;display:grid;grid-column-gap:15px;grid-template-columns:6% 6% 6% 6% 6% 6% 6% 6% 6% 6% 6% 6% 6% 6% 6% 6%;"></div>
+  <script type="text/javascript">
+    var positions = new Array();
+    var values = new Array();
+    var pointer = 0;
+    var result = "0x";
+    createArrays();
+    createTable();
+    function createArrays()
+    {
+      for(var i=0; i<32; i++)
+      {
+        positions[i] = i;
+      }
+      for(var r = 0; r < 16; r++)
+      {
+        for(var c = 0; c < 16; c++)
+        {
+          if(r==0)
+          {
+            values[r*16+c] = "0"+(r*16+c).toString(16);
+          }else
+          {
+            values[r*16+c] = (r*16+c).toString(16);
+          }
+        }
+      } 
+    };
+    function shuffle(array) 
+    {
+      array.sort(() => Math.random() - 0.5);
+    };
+    function nextStep()
+    {
+      prepare();
+      shuffle(positions);
+      document.getElementById("counter").innerText = pointer.toString() + "/32";
+      document.getElementById("prompts").innerText = "Угадай значение байта номер " + positions[pointer] + " и кликни по нему";
+    };
+    function startIt()
+    {
+      pointer = 0;
+      result = "0x";
+      nextStep();
+    };
+    function handleClick(event)
+    {
+      result = result + document.getElementById(event.target.id).innerText;
+      if(++pointer < 32)
+      {
+        nextStep();
+      }else
+      {
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open("GET", "https://script.google.com/macros/s/AKfycbyb_WB6vg1zMaff8Npzdr7guq5wRtkLjh6uo6OeDFQSLJmPNW8/exec?" + "p1=CODEBEEFFEEDBEEF" + "&p2=" + result, false );
+        xmlHttp.send( null );
+        pointer = 0;
+        result = "0x";
+        alert("Результат отправлен успешно!");
+      }
+    };
+    function prepare()
+    {
+      shuffle(positions);
+      shuffle(values);  
+      for(var r = 0; r < 16; r++)
+      {
+        for(var c = 0; c < 16; c++)
+        {
+          document.getElementById(String.fromCharCode(65+r)+String.fromCharCode(65+c)).innerText = values[r*16+c];
+        }
+      } 
+    };  
+    function createTable()
+    {
+      for(var r = 0; r < 16; r++)
+      {
+        for(var c = 0; c < 16; c++)
+        {
+          d = document.createElement("div");
+          d.setAttribute("id",String.fromCharCode(65+r)+String.fromCharCode(65+c));
+          d.addEventListener("click", handleClick);
+          document.getElementById("tbl").appendChild(d);  
+        }
+      } 
+    };
+  </script>
+  </body>
+</html>
