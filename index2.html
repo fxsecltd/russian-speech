@@ -48,12 +48,12 @@
     function nextStep()
     {
       prepare();
-      shuffle(positions);
       document.getElementById("counter").innerText = (pointer+1).toString() + "/32";
       document.getElementById("prompts").innerText = "Угадай значение байта на позиции " + positions[pointer] + " и кликни по нему";
     };
     function startIt()
     {
+      shuffle(positions);
       pointer = 0;
       result[0] = "0x";
       nextStep();
@@ -80,7 +80,6 @@
     };
     function prepare()
     {
-      shuffle(positions);
       shuffle(values);  
       for(var r = 0; r < 16; r++)
       {
