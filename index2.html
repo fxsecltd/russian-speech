@@ -59,10 +59,11 @@
     };
     function handleClick(event)
     {
-      result = result + document.getElementById(event.target.id).innerText;
-      if(++pointer < 33)
+      if(pointer < 32)
       {
+        result = result + document.getElementById(event.target.id).innerText;
         nextStep();
+        pointer++;
       }else
       {
           pointer = 0;
