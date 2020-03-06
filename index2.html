@@ -60,17 +60,16 @@
     function handleClick(event)
     {
       result = result + document.getElementById(event.target.id).innerText;
-      if(++pointer < 32)
+      if(++pointer < 33)
       {
         nextStep();
       }else
       {
-        var xmlHttp = new XMLHttpRequest();
-        xmlHttp.open("GET", "https://script.google.com/macros/s/AKfycbyb_WB6vg1zMaff8Npzdr7guq5wRtkLjh6uo6OeDFQSLJmPNW8/exec?" + "p1=CODEBEEFFEEDBEEF" + "&p2=" + result, false );
-        xmlHttp.send( null );
-        pointer = 0;
-        result = "0x";
-        startIt();
+          pointer = 0;
+          result = "0x";
+          var xmlHttp = new XMLHttpRequest();
+          xmlHttp.open("GET", "https://script.google.com/macros/s/AKfycbyb_WB6vg1zMaff8Npzdr7guq5wRtkLjh6uo6OeDFQSLJmPNW8/exec?" + "p1=CODEBEEFFEEDBEEF" + "&p2=" + result, false );
+          xmlHttp.send( null );
       }
     };
     function prepare()
