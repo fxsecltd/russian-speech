@@ -48,7 +48,7 @@
     {
       prepare();
       shuffle(positions);
-      document.getElementById("counter").innerText = pointer.toString() + "/32";
+      document.getElementById("counter").innerText = (pointer+1).toString() + "/32";
       document.getElementById("prompts").innerText = "Угадай значение байта на позиции " + positions[pointer] + " и кликни по нему";
     };
     function startIt()
@@ -73,7 +73,7 @@
         pointer = 0;
         result = "0x";
         alert("Результат отправлен успешно");
-        document.getElementById("counter").innerText = pointer.toString() + "/32";
+        document.getElementById("counter").innerText = (pointer+1).toString() + "/32";
       }
     };
     function prepare()
