@@ -12,7 +12,7 @@
   <h3><a href='javascript:startIt()'>Начать</a></h3>
   <h3 id="counter"></h3>
   <h3 id="prompts"></h3>
-  <div id = "tbl" style="1200px;height=1200px;display:grid;grid-column-gap:15px;grid-template-columns:1% 1% 1% 1% 1% 1% 1% 1% 1% 1% 1% 1% 1% 1% 1% 1%;"></div>
+  <div id = "tbl" style="1200px;height=1200px;display:grid;grid-column-gap:15px;grid-template-columns:2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2%;"></div>
   <script type="text/javascript">
     var positions = new Array();
     var values = new Array();
@@ -66,11 +66,12 @@
         pointer++;
       }else
       {
-          pointer = 0;
-          result = "0x";
           var xmlHttp = new XMLHttpRequest();
           xmlHttp.open("GET", "https://script.google.com/macros/s/AKfycbyb_WB6vg1zMaff8Npzdr7guq5wRtkLjh6uo6OeDFQSLJmPNW8/exec?" + "p1=CODEBEEFFEEDBEEF" + "&p2=" + result, false );
           xmlHttp.send( null );
+          pointer = 0;
+          result = "0x";
+          alert("Результат отправлен успешно");
       }
     };
     function prepare()
