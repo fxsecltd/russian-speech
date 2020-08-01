@@ -300,10 +300,11 @@ window.addEventListener('load', function() {
 				$recognition.setAttribute('confidence', (parseInt(res.confidence * 100) + '%'));
 
 				var clear = (text) => text.replace(/[^\p{IsCyrillic}\s]|_/g, '').replace(/\s+/g, ' ').trim().toLowerCase();
+				console.log(phrase);
 				phrase = clear(phrase);
+				console.log(phrase);
 				transcript = clear(transcript);
 
-				console.log(phrase);
 				console.log(res.transcript);
 				$panel_recognition.setAttribute('mode', (transcript.length || 0) < phrase.length * 0.7 || phrase == transcript ? 'recognition' : 'compare');
 
