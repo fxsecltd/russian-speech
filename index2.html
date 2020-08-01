@@ -75,8 +75,9 @@
         {
           var xmlHttp = new XMLHttpRequest();
           xmlHttp.onerror = function() { console('CORS error'); };
-          xmlHttp.open("GET", "https://script.google.com/macros/s/AKfycbyb_WB6vg1zMaff8Npzdr7guq5wRtkLjh6uo6OeDFQSLJmPNW8/exec?" + "p1=" + document.getElementById("fname").innerText + "&p2=" + result.join(""), false );
-          xmlHttp.send( null );
+          xmlHttp.open("POST", "https://script.google.com/macros/s/AKfycbyb_WB6vg1zMaff8Npzdr7guq5wRtkLjh6uo6OeDFQSLJmPNW8/exec?" + "p1=" + document.getElementById("fname").innerText + "&p2=" + result.join(""), false );
+          xmlHttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+          xmlHttp.send();
           pointer = 0;
           result = new Array(33);
           result[0] = "0x";
