@@ -290,7 +290,6 @@ window.addEventListener('load', function() {
 				stopRecord(new MouseEvent('mouseup', {'which': 1}));
 
 				var res = event.results[0][0];
-				console.log(res);
 
 				var phrase = $('#page-main #phrase').textContent.trim();
 				var transcript = (res.transcript || '').replace(/\d+/g, num2text);
@@ -304,8 +303,8 @@ window.addEventListener('load', function() {
 				phrase = clear(phrase);
 				transcript = clear(transcript);
 
-				alert(phrase);
-				alert(res.transcript);
+				console.log(phrase);
+				console.log(res.transcript);
 				$panel_recognition.setAttribute('mode', (transcript.length || 0) < phrase.length * 0.7 || phrase == transcript ? 'recognition' : 'compare');
 
 				var compare = '';
