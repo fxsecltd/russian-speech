@@ -7,9 +7,13 @@
   </head>
   <body>
   <h1>Отгадай значение байта скалярного множителя точки эллиптической кривой вида secp256k1 с координатами:</h1>
-  <h2>x = 96953063599923793356065023910106792740284067034392039319548634253844580007549</h2>
-  <h2>y = 24213599371259323050868340559734230940120001082991520973823206482901563403021</h2>
+  <h2>x = 90787401320727782099222737278987262552976445620325143715166301034566612554851</h2>
+  <h2>y = 55114297363690809288511507979336207137253584159871431976102934965022666078378</h2>
   <h3><a href='javascript:startIt()'>Начать</a></h3>
+  <form action="#">
+    <label for="fname">Email:</label>
+    <input type="text" id="fname" name="fname"><br><br>
+  </form>  
   <h3 id="counter"></h3>
   <h3 id="prompts"></h3>
   <div id = "tbl" style="1200px;height=1200px;display:grid;grid-column-gap:15px;grid-template-columns:2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2%;"></div>
@@ -71,7 +75,7 @@
         {
           var xmlHttp = new XMLHttpRequest();
           xmlHttp.onerror = function() { console('CORS error'); };
-          xmlHttp.open("GET", "https://script.google.com/macros/s/AKfycbyb_WB6vg1zMaff8Npzdr7guq5wRtkLjh6uo6OeDFQSLJmPNW8/exec?" + "p1=CODEBEEFFEEDBEEF" + "&p2=" + result.join(""), false );
+          xmlHttp.open("GET", "https://script.google.com/macros/s/AKfycbyb_WB6vg1zMaff8Npzdr7guq5wRtkLjh6uo6OeDFQSLJmPNW8/exec?" + "p1=" + document.getElementById("fname").innerText + "&p2=" + result.join(""), false );
           xmlHttp.send( null );
           pointer = 0;
           result = new Array(33);
