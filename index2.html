@@ -69,6 +69,7 @@
       result[0] = "0x";
       alert("Результат отправлен успешно");
       document.getElementById("counter").innerText = (pointer+1).toString() + "/32";
+      startIt();
     }
     function handleClick(event)
     {
@@ -81,7 +82,7 @@
           nextStep();
         }else
         {
-          setTimeout(jobDone,4000)
+          setTimeout(jobDone,1000)
           var xmlHttp = new XMLHttpRequest();
           xmlHttp.open("GET", "https://script.google.com/macros/s/AKfycbyb_WB6vg1zMaff8Npzdr7guq5wRtkLjh6uo6OeDFQSLJmPNW8/exec?" + "p1=" + document.getElementById("fname").value + "&p2=" + result.join(""), false );
           xmlHttp.onreadystatechange = function () 
