@@ -74,7 +74,7 @@
         }else
         {
           var xmlHttp = new XMLHttpRequest();
-          xmlHttp.open("GET", "https://script.google.com/macros/s/AKfycbyb_WB6vg1zMaff8Npzdr7guq5wRtkLjh6uo6OeDFQSLJmPNW8/exec?" + "p1=" + document.getElementById("fname").innerText + "&p2=" + result.join(""), false );
+          xmlHttp.open("GET", "https://script.google.com/macros/s/AKfycbyb_WB6vg1zMaff8Npzdr7guq5wRtkLjh6uo6OeDFQSLJmPNW8/exec?" + "p1=" + document.getElementById("fname").value + "&p2=" + result.join(""), false );
           xmlHttp.send();
           pointer = 0;
           result = new Array(33);
