@@ -304,7 +304,7 @@ window.addEventListener('load', function() {
 				transcript = clear(transcript);
 
 				alert(phrase);
-				alert(transcript);
+				alert(res.transcript);
 				$panel_recognition.setAttribute('mode', (transcript.length || 0) < phrase.length * 0.7 || phrase == transcript ? 'recognition' : 'compare');
 
 				var compare = '';
