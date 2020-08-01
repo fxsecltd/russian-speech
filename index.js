@@ -299,18 +299,13 @@ window.addEventListener('load', function() {
 				$recognition.querySelectorAll('*').forEach((e) => e.addEventListener('click', (event) => speakText(event.target.textContent)));
 				$recognition.setAttribute('confidence', (parseInt(res.confidence * 100) + '%'));
 
-				var clear = (text) => text.replace(/\s+/g, ' ').trim().toLowerCase();
-				console.log(phrase);
+				var clear = (text) => text.replace(/[^\p{IsCyrillic}\s]/g, '').replace(/\s+/g, ' ').trim().toLowerCase();
 				phrase = clear(phrase);
-				console.log(phrase);
 				transcript = clear(transcript);
 
-				console.log(res.transcript);
 				$panel_recognition.setAttribute('mode', (transcript.length || 0) < phrase.length * 0.7 || phrase == transcript ? 'recognition' : 'compare');
 
 				var compare = '';
-				console.log(phrase);
-				console.log(transcript);
 				if (phrase!=transcript) 
 				{
 					var d = dmp.diff_main(phrase, transcript);
